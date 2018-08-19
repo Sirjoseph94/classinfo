@@ -127,6 +127,15 @@ $(function() {
 		});
 	});
 
+	// Select2
+	
+$(document).ready(function() {
+    $('.audience_select').select2({
+		placeeholder : 'Choose your audience',
+		cache: true
+	});
+});
+
 	// Collapsable
 	$("[data-collapse]").each(function() {
 		var me = $(this),

@@ -17,6 +17,7 @@
   {{-- <link rel="stylesheet" href="{{ asset ( 'dist/modules/flag-icon-css/css/flag-icon.min.css' ) }}"> --}}
   <link rel="stylesheet" href="{{ asset ( 'dist/css/demo.css') }}">
   <link rel="stylesheet" href="{{ asset ( 'dist/css/style.css') }}">
+  <link rel="stylesheet" href="{{ asset ( 'dist/css/select2.min.css') }}">
 </head>
 
 <body>
@@ -165,7 +166,7 @@
   </div>
 
   <script src=" {{ asset ('js/app.js' ) }}"></script>
-  {{-- <script src=" {{asset ('dist/modules/bootstrap/js/bootstrap.min.js') }}"></script> --}}
+  <script src=" {{asset ('dist/modules/bootstrap/js/bootstrap.min.js') }}"></script>
   <script src=" {{asset ('dist/modules/popper.js') }}"></script>
   <script src="{{ asset ('dist/modules/tooltip.js' ) }}"></script>
   <script src=" {{ asset ('dist/modules/nicescroll/jquery.nicescroll.min.js' ) }}"></script>
@@ -173,8 +174,10 @@
   <script src="{{ asset ('dist/js/sa-functions.js') }}"></script>
   
   <script src=" {{ asset ('dist/modules/summernote/summernote-lite.js' ) }}"></script>
-
+  
   <script src="{{ asset ('dist/js/scripts.js') }}"></script>
+  <script src="{{ asset ('dist/js/select2.min.js') }}"></script>
+  
   <script src="{{ asset('dist/js/demo.js') }}"></script>
 </body>
 </html>

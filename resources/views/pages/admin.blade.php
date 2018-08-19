@@ -28,12 +28,15 @@
                 <div class="collapse " id="mycard-collapse" style="">
                   <div class="form-group">
                       <div>
-                          <label class="typo__label">Select Audience</label>
-                          {{-- <multiselect v-model="value" :options="options" :multiple="true" :close-on-select="true" :clear-on-select="true" :hide-selected="true" :preserve-search="true" placeholder="Pick Audience" label="name" track-by="name" :preselect-first="false">
-                              <template slot="tag" slot-scope="props"><span class="custom__tag"><span>{{ props.option.name }}</span><span class="custom__remove" @click="props.remove(props.option)">❌</span></span></template>
-                          </multiselect> --}}
-                         
-                      </div>
+                          <label for="audience_select" >Select Audience</label>
+                          <select id="audience_select" style="width: 100%" class="audience_select form-control" name="select_audience" multiple="multiple">
+                              
+                              <option value="AL">Alabama</option>
+                              <option value="WY">Wyoming</option>
+                              <option value="AL">test2</option>
+                              <option value="AL">test</option>
+                            </select>
+                          </div>
                   </div>
                   <div class="form-group">
                     <label>Title</label>

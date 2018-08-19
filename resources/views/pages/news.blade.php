@@ -28,6 +28,7 @@
                   </tr>
                 </thead>
                 <tbody>   
+                  
                   @foreach($news as $post)                  
                   <tr>
                     <td>
@@ -48,7 +49,9 @@
                   @endforeach
                 </tbody>
               </table>
+              {{-- @if(count($news > 5)) 
               {{ $news->links() }}
+              @endif --}}
             </div>
           </div>
         </div>

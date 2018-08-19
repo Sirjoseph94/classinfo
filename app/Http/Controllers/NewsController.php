@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\News;
 use Illuminate\Http\Request;
+use App\Tag;
 
 class NewsController extends Controller
 {
@@ -12,10 +13,10 @@ class NewsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Tag $tag = null )
     {
         // $news = News::all();
-        $tags = $model->tags();
+       
         $news = News::orderBy('created_at', 'desc')->simplePaginate(5);
         return view('pages.news')->with('news', $news);
     }

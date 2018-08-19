@@ -18,6 +18,8 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::post('/send', 'NewsController@store')->name('send');
 
+Route::get('/interests/{tag}', 'TagsController@index')->name('tags');
+
 
 Route::get('/profile', function () {
 
