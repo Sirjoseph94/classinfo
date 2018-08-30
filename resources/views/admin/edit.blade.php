@@ -31,13 +31,13 @@
                   <div class="form-group">
                       <input type="hidden" _method="PATCH" value="UPDATE">
                   <input type="hidden" name="_token" value="{{csrf_token()}}">
-                      <div>
-                          {{-- <label class="typo__label">Select Audience</label> --}}
-                          {{-- <multiselect v-model="value" :options="options" :multiple="true" :close-on-select="true" :clear-on-select="true" :hide-selected="true" :preserve-search="true" placeholder="Pick Audience" label="name" track-by="name" :preselect-first="false">
-                              <template slot="tag" slot-scope="props"><span class="custom__tag"><span>{{ props.option.name }}</span><span class="custom__remove" @click="props.remove(props.option)">❌</span></span></template>
-                          </multiselect> --}}
-                         
-                      </div>
+                    
+                        <div class="form-group ">
+                          <label for="interest_select" >Select Audience: </label>
+                          <select id="interest_select" style="width: 100%" class=" form-control" name="interest_select[]" placeholder="Select audience here" multiple>
+                          </select>
+                        </div>
+                   
                   </div>
                   <div class="form-group">
                     <label>Title</label>

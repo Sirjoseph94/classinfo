@@ -129,7 +129,7 @@
               {{-- <a href="{{ route('news')}}"><i class="ion ion-ios-albums-outline"></i><span>All News</span></a> --}}
             </li>
             <li>
-               <a href="{{ route('interest.index')}}" class="btn-link"><i class="ion ion-flag"></i><span>Interests</span></a> 
+               {{-- <a href="{{ route('interests')}}" class="btn-link"><i class="ion ion-flag"></i><span>Interests</span></a>  --}}
               <ul class="menu-dropdown">
                     {{-- @foreach($interests as $i)
               <li><a href="{{ route('interest.index')}}"><i class="ion ion-ios-circle-outline"></i> {{ $i->code }}</a></li>

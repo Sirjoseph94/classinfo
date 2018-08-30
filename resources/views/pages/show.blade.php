@@ -19,7 +19,7 @@
           </div>
           <div class="card-body">
           <h3> {{ $news -> title}}</h3>
-          <p>{{ $news -> message}}</p>
+          <p>{!! $news -> message!!}</p>
           </div>
         </div>
       </div>

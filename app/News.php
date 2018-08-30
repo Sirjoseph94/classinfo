@@ -8,7 +8,9 @@ use App\User;
 
 class News extends Model
 {
-  
+    protected $fillable = [
+        'interest_select'
+    ];
     
     public function user() {
         return $this->belongsTo('App\User');

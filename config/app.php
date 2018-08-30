@@ -162,8 +162,7 @@ return [
 
 
         //custom
-        Cviebrock\EloquentSluggable\ServiceProvider::class,
-        Lecturize\Tags\TagsServiceProvider::class
+    
 
     ],
 

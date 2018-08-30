@@ -26,18 +26,12 @@
                 <form method="post" action="/send" class="needs-validation" novalidate="">
                   @csrf
                 <div class="collapse " id="mycard-collapse" style="">
-                  <div class="form-group">
-                      <div>
-                          <label for="audience_select" >Select Audience</label>
-                          <select id="audience_select" style="width: 100%" class="audience_select form-control" name="select_audience" multiple="multiple">
-                              
-                              <option value="AL">Alabama</option>
-                              <option value="WY">Wyoming</option>
-                              <option value="AL">test2</option>
-                              <option value="AL">test</option>
-                            </select>
-                          </div>
-                  </div>
+              
+                    <div class="form-group ">
+                      <label for="interest_select" >Select Interests: </label>
+                      <select id="interest_select" style="width: 100%" class=" form-control" name="interest_select[]" multiple>
+                      </select>
+                    </div>
                   <div class="form-group">
                     <label>Title</label>
                     <input type="text" name="title" class="form-control" required>
@@ -96,7 +90,7 @@
                         <td>
                           {{ $post->title }}
                           <div class="table-links">
-                            in <a href="#">Web Development</a>
+                            in <a href="#"></a>
                             <div class="bullet"></div>
                           <a href="/admin/{{ $post->id }}">View</a>
                            

@@ -17,18 +17,21 @@
                         </div> --}}
                         <h4>My Interests</h4>
                     </div>
-
+                    @if($flash = Session::get('success'))
+                    <div class="alert alert-success alert-dismissible fade show">
+                      <strong>{{ $flash }}</strong>
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                  @endif
                     <div class="mb-5 mx-3">
-                      <form action="" method="post">
+                      <form action="/profile/add" method="get">
                         <div class="form-group ">
-                                <label for="audience_select" >Select Interests: </label>
-                                <select id="audience_select" style="width: 100%" class="audience_select form-control" name="select_audience" multiple="multiple">
-                                    
-                                    <option value="AL">Alabama</option>
-                                    <option value="WY">Wyoming</option>
-                                    <option value="AL">test2</option>
-                                    <option value="AL">test</option>
-                                  </select>
+                                @csrf
+                            <label for="interest_select" >Select Interests: </label>
+                            <select id="interest_select" style="width: 100%" class=" form-control" name="interest_select[]" multiple>
+                            </select>
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-outline-primary">Add Interest</button>

@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\News;
+use App\Tag;
 
 class User extends Authenticatable
 {
@@ -28,8 +29,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
     
-    public function news(){
-        
+    public function news() {        
             return $this->hasMany('App\News');
+    }
+
+    public function tags() {        
+            return $this->belongsToMany('App\Tag');
     }
 }

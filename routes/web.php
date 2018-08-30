@@ -18,20 +18,16 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::post('/send', 'NewsController@store')->name('send');
 
-Route::get('/interests/{tag}', 'TagsController@index')->name('tags');
+Route::get('/interests/add', 'TagsController@add');
+Route::get('/interests/delete/{id}', 'TagsController@delete');
+Route::get('/interests', 'TagsController@index');
+Route::get('/interests/fetch', 'TagsController@fetch');
 
 
-Route::get('/profile', function () {
-
-    //Retrive user details from user id
-    $user_id = auth()->user()->id;
-    $user = App\User::find($user_id);
-   
-    return view('pages.profile')->with('user', $user);
-})->name('profile');
+Route::get('/profile', 'ProfileController@index')->name('profile');;
+Route::get('/profile/add', 'ProfileController@addInterest')->name('addInterest');;
 
 Route::resource('news', 'NewsController');
-Route::resource('interest', 'InterestController');
 Route::resource('admin', 'AdminController');
 
 // Route::get('/admin', function() {

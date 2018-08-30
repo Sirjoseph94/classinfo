@@ -6,6 +6,7 @@ use App\Admin;
 use Illuminate\Http\Request;
 use App\User;
 use App\News;
+use App\Tag;
 
 class AdminController extends Controller
 {
@@ -15,7 +16,7 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index()
+    public function index(Tag  $tag = null)
     {
         // if (Gate::allows('admin-access', Auth::user())) {
             // The current user can access admin panel...
@@ -23,6 +24,7 @@ class AdminController extends Controller
             $news = News::where('user_id', $user_id)->orderBy('created_at', 'desc')->simplePaginate(5);
            // $news = $user->news;
            //$userNews = $news;
+         //  dd($news->);
             return view('pages.admin')->with('news', $news);
         }
     // }
@@ -45,7 +47,7 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-      //
+      //handled in news controller
     }
 
     /**
@@ -82,19 +84,18 @@ class AdminController extends Controller
      */
     public function update(Request $request,  $id)
     {
-        // $this->validate($request, [
-        //     'title' => 'required|string|max:100',
-        //     'message' => 'required'
-        // ]);
-
-        // //$news = new News;
-        // $news->title = $request->input('title');
-        // $news->message = $request ->input('message');
-        // $news->user_id = $request -> input('user_id');
-        // $news->save();
-        echo "'Hey i'm here";
-
-       // return redirect('admin')->with($request->session()->flash('success', 'Information was updated successfully!'));
+        $this->validate($request, [
+            'title' => 'required|string|max:100',
+            'message' => 'required'
+        ]);
+        $news->tags()->dettach($tag);
+        //$news = new News;
+        $news->title = $request->input('title');
+        $news->message = $request ->input('message');
+        $news->user_id = $request -> input('user_id');
+        $news->save();
+        $news->tags()->dettach($tag);
+        return redirect('admin')->with($request->session()->flash('success', 'Information was updated successfully!'));
     }
 
     /**

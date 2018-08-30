@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\News;
+use App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use App\Tag;
+use App\User;
 
 class NewsController extends Controller
 {
@@ -15,9 +17,25 @@ class NewsController extends Controller
      */
     public function index(Tag $tag = null )
     {
-        // $news = News::all();
-       
-        $news = News::orderBy('created_at', 'desc')->simplePaginate(5);
+        //$tags = tags()->id;
+
+        
+        
+        // $news = News::->simplePaginate(5);
+        $user_id = auth()->user()->id;
+        $user = User::with('tags.news')->find($user_id);
+        
+    
+ 
+         $tags = $user->tags->pluck('id'); // in L < 5.3 it was lists()
+        //  dd($postsArray);
+
+         $news = News::whereHas('tags', function($q) use ($tags) {
+             $q->whereIn('id', $tags);
+         })->orderBy('created_at', 'desc')->get();
+        //  $news = collect($postsArray)->collapse()->unique();
+        
+
         return view('pages.news')->with('news', $news);
     }
 
@@ -44,11 +62,17 @@ class NewsController extends Controller
             'message' => 'required'
         ]);
 
-        $news = new News;
-        $news->title = $request->input('title');
-        $news->message = $request ->input('message');
-        $news->user_id = $request -> input('user_id');
-        $news->save();
+            $tag = $request -> input('interest_select');
+           // $user = Auth::user();
+        //    $news =  auth()->user()->news()->create($request->except(['_token']));
+         $news = new News;
+        
+         $news->title = $request->input('title');
+         $news->message = $request ->input('message');
+         $news->user_id = $request -> input('user_id');
+         $news->save();
+         $news->tags()->attach($tag);
+        
 
         return redirect('admin')->with($request->session()->flash('success', 'Information was sent successfully!'));
     }
@@ -73,8 +97,9 @@ class NewsController extends Controller
      */
     public function edit(News $id)
     {
-        $post = News::find($id);
-        return view('admin.edit')->with('news', $post);
+        $news = News::find($id);
+        $news->tags()->attach($tag);
+        return view('admin.edit')->with('news', $news);
     }
 
     /**

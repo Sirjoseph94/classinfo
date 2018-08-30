@@ -22,9 +22,24 @@ class CreateTagsTable extends Migration
 
         Schema::create('news_tag', function (Blueprint $table) {
 
-            $table->string('news_id');
-            $table->string('tag_id');
+            $table->integer('news_id')->unsigned()->index();
+            $table->foreign('news_id')->references('id')->on('news')->onDelete('cascade');
+
+            $table->integer('tag_id')->unsigned()->index();
+            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
             $table->primary(['news_id', 'tag_id']);
+
+        });
+
+        Schema::create('tag_user', function (Blueprint $table) {
+
+            $table->integer('user_id')->unsigned()->index();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
+            $table->integer('tag_id')->unsigned()->index();
+            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
+            
+            $table->primary(['user_id', 'tag_id']);
 
         });
     }

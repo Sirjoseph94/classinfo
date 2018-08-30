@@ -12,9 +12,9 @@
        {{-- <newsfeed ></newsfeed> --}}
        <div class="card" id="newsfeed">
           <div class="card-header">
-            <div class="float-right">
+            {{-- <div class="float-right">
               <a href="#" class="btn btn-primary">View All</a>
-            </div>
+            </div> --}}
             <h4>Latest News</h4>
           </div>
           <div class="card-body">

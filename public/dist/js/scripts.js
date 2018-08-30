@@ -130,9 +130,26 @@ $(function() {
 	// Select2
 	
 $(document).ready(function() {
-    $('.audience_select').select2({
+    $('#interest_select').select2({
 		placeeholder : 'Choose your audience',
-		cache: true
+		cache: true,
+		ajax: {
+			url: '/interests/fetch',
+			dataType: 'json',
+			delay: 250,
+			minimumInputLength: 1,
+			data: function(params) {
+				return {
+					q: $.trim(params.term)
+				};
+			},
+			processResults: function (data) {
+				return {
+					results: data					
+				}
+			}
+			// Additional AJAX parameters go here; see the end of this chapter for the full code of this example
+		}
 	});
 });
 
