@@ -34,13 +34,16 @@
                     <td>
                       {{ $post->title }}
                       <div class="table-links">
-                        in <a href="#">Web Development</a>
+                       in {{$post->tag_code}}
                         <div class="bullet"></div>
+                        
+                        
                       <a href="/news/{{$post -> id}}">View</a>
                       </div>
                     </td>
                     <td>
-                      <a href="#"><img src="/dist/img/avatar/avatar-1.jpeg" alt="avatar" width="30" class="rounded-circle mr-1"> </a>
+                      <span>{{$post -> user -> name }}</span>
+                      {{-- <a href="#"><img src="/dist/img/avatar/avatar-1.jpeg" alt="avatar" width="30" class="rounded-circle mr-1"> </a> --}}
                     </td>
                     <td>
                     <span>{{ $post -> created_at }}</span>  

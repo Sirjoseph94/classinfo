@@ -18,25 +18,18 @@ class NewsController extends Controller
     public function index(Tag $tag = null )
     {
         //$tags = tags()->id;
-
-        
-        
-        // $news = News::->simplePaginate(5);
         $user_id = auth()->user()->id;
         $user = User::with('tags.news')->find($user_id);
         
-    
- 
-         $tags = $user->tags->pluck('id'); // in L < 5.3 it was lists()
-        //  dd($postsArray);
+        $tag_id = $user->tags->pluck('id');
 
-         $news = News::whereHas('tags', function($q) use ($tags) {
-             $q->whereIn('id', $tags);
+         $news = News::whereHas('tags', function($q) use ($tag_id) {
+             $q->whereIn('id', $tag_id);
          })->orderBy('created_at', 'desc')->get();
-        //  $news = collect($postsArray)->collapse()->unique();
-        
 
-        return view('pages.news')->with('news', $news);
+
+         $tag_code = (Tag::has('news'))->pluck('code');
+        return view('pages.news', compact($tag_code))->with('news', $news);
     }
 
     /**
@@ -55,28 +48,7 @@ class NewsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $this->validate($request, [
-            'title' => 'required|string|max:100',
-            'message' => 'required'
-        ]);
-
-            $tag = $request -> input('interest_select');
-           // $user = Auth::user();
-        //    $news =  auth()->user()->news()->create($request->except(['_token']));
-         $news = new News;
-        
-         $news->title = $request->input('title');
-         $news->message = $request ->input('message');
-         $news->user_id = $request -> input('user_id');
-         $news->save();
-         $news->tags()->attach($tag);
-        
-
-        return redirect('admin')->with($request->session()->flash('success', 'Information was sent successfully!'));
-    }
-
+    
     /**
      * Display the specified resource.
      *

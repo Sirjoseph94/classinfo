@@ -22,9 +22,7 @@ class AdminController extends Controller
             // The current user can access admin panel...
             $user_id = auth()->user()->id;
             $news = News::where('user_id', $user_id)->orderBy('created_at', 'desc')->simplePaginate(5);
-           // $news = $user->news;
-           //$userNews = $news;
-         //  dd($news->);
+           //dd($news);
             return view('pages.admin')->with('news', $news);
         }
     // }
@@ -47,7 +45,29 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-      //handled in news controller
+          
+      $this->validate($request, [
+        'title' => 'required|string|max:100',
+        'message' => 'required'
+    ]);
+
+        $tag = $request -> input('interest_select');
+        
+        $news = new News;
+        
+        $news->title = $request->input('title');
+        $news->message = $request ->input('message');
+        $news->user_id = $request -> input('user_id');
+        $news->save();
+        $news->tags()->attach($tag);
+
+        $users = User::whereHas('tags', function($q) use ($tag) {
+            $q->whereIn('id', $tag);
+        })->get();
+        // dd($users);
+        // Notification::send($users, new NewMessage($news));
+        return redirect('admin')->with($request->session()->flash('success', 'Information was sent successfully!'));
+        
     }
 
     /**
@@ -95,7 +115,12 @@ class AdminController extends Controller
         $news->user_id = $request -> input('user_id');
         $news->save();
         $news->tags()->dettach($tag);
+
         return redirect('admin')->with($request->session()->flash('success', 'Information was updated successfully!'));
+        
+      //  $users = User::with('tags.news');
+       // dd($users);
+       // Notification::send($users, new NewMessage($news));
     }
 
     /**

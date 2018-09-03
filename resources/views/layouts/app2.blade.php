@@ -39,9 +39,9 @@
           <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep"><i class="ion ion-ios-bell-outline"></i></a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
               <div class="dropdown-header">Notifications
-                <div class="float-right">
+                {{-- <div class="float-right">
                   <a href="#">View All</a>
-                </div>
+                </div> --}}
               </div>
               <div class="dropdown-list-content">
                 <a href="#" class="dropdown-item dropdown-item-unread">
@@ -49,34 +49,6 @@
                   <div class="dropdown-item-desc">
                     <b>Kusnaedi</b> has moved task <b>Fix bug header</b> to <b>Done</b>
                     <div class="time">10 Hours Ago</div>
-                  </div>
-                </a>
-                <a href="#" class="dropdown-item dropdown-item-unread">
-                  <img alt="image" src="../dist/img/avatar/avatar-2.jpeg" class="rounded-circle dropdown-item-img">
-                  <div class="dropdown-item-desc">
-                    <b>Ujang Maman</b> has moved task <b>Fix bug footer</b> to <b>Progress</b>
-                    <div class="time">12 Hours Ago</div>
-                  </div>
-                </a>
-                <a href="#" class="dropdown-item">
-                  <img alt="image" src="../dist/img/avatar/avatar-3.jpeg" class="rounded-circle dropdown-item-img">
-                  <div class="dropdown-item-desc">
-                    <b>Agung Ardiansyah</b> has moved task <b>Fix bug sidebar</b> to <b>Done</b>
-                    <div class="time">12 Hours Ago</div>
-                  </div>
-                </a>
-                <a href="#" class="dropdown-item">
-                  <img alt="image" src="../dist/img/avatar/avatar-4.jpeg" class="rounded-circle dropdown-item-img">
-                  <div class="dropdown-item-desc">
-                    <b>Ardian Rahardiansyah</b> has moved task <b>Fix bug navbar</b> to <b>Done</b>
-                    <div class="time">16 Hours Ago</div>
-                  </div>
-                </a>
-                <a href="#" class="dropdown-item">
-                  <img alt="image" src="../dist/img/avatar/avatar-5.jpeg" class="rounded-circle dropdown-item-img">
-                  <div class="dropdown-item-desc">
-                    <b>Alfa Zulkarnain</b> has moved task <b>Add logo</b> to <b>Done</b>
-                    <div class="time">Yesterday</div>
                   </div>
                 </a>
               </div>
@@ -168,6 +140,7 @@
   <script src=" {{ asset ('js/app.js' ) }}"></script>
   <script src=" {{asset ('dist/modules/bootstrap/js/bootstrap.min.js') }}"></script>
   <script src=" {{asset ('dist/modules/popper.js') }}"></script>
+  <script src="//js.pusher.com/3.1/pusher.min.js"></script>
   <script src="{{ asset ('dist/modules/tooltip.js' ) }}"></script>
   <script src=" {{ asset ('dist/modules/nicescroll/jquery.nicescroll.min.js' ) }}"></script>
   <script src="{{ asset ('dist/modules/scroll-up-bar/dist/scroll-up-bar.min.js' ) }}"></script>

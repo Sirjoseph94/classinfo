@@ -16,24 +16,23 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::post('/send', 'NewsController@store')->name('send');
+Route::post('/send', 'AdminController@store')->name('send');
 
-Route::get('/interests/add', 'TagsController@add');
-Route::get('/interests/delete/{id}', 'TagsController@delete');
+Route::post('/interests/add', 'TagsController@add');
+Route::post('/interests/delete/{id}', 'TagsController@delete');
 Route::get('/interests', 'TagsController@index');
 Route::get('/interests/fetch', 'TagsController@fetch');
 
 
-Route::get('/profile', 'ProfileController@index')->name('profile');;
-Route::get('/profile/add', 'ProfileController@addInterest')->name('addInterest');;
 
 Route::resource('news', 'NewsController');
 Route::resource('admin', 'AdminController');
+Route::resource('profile', 'ProfileController');
 
 // Route::get('/admin', function() {
 //     if (Gate::allows('admin-access', Auth::user())) {
 //         // The current user can access admin panel...
-//         return view('pages.admin');
+//         return redirect('/admin');
 //     } else {
 //         return ('You are not authorizied to access this page');
 //     }

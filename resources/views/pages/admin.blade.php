@@ -23,7 +23,7 @@
                 <div class="card-header" data-toggle="tooltip" data-displacement="top" title data-original-title="Click on - to expand"><div class="float-right"><a data-collapse="#mycard-collapse" class="btn btn-icon">
                   <i class="ion ion-minus"></i></a></div><h4>Send Message</h4></div>
                 </div>
-                <form method="post" action="/send" class="needs-validation" novalidate="">
+                <form method="post" action="{{action('AdminController@store')}}" class="needs-validation" novalidate="">
                   @csrf
                 <div class="collapse " id="mycard-collapse" style="">
               

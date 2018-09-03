@@ -30,10 +30,14 @@ class User extends Authenticatable
     ];
     
     public function news() {        
+
             return $this->hasMany('App\News');
+            
     }
 
     public function tags() {        
+
             return $this->belongsToMany('App\Tag');
+
     }
 }

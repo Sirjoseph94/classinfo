@@ -26,7 +26,7 @@
                     </div>
                   @endif
                     <div class="mb-5 mx-3">
-                      <form action="/profile/add" method="get">
+                      <form action="{{action('ProfileController@store')}}" method="post">
                         <div class="form-group ">
                                 @csrf
                             <label for="interest_select" >Select Interests: </label>
@@ -38,7 +38,6 @@
                           </div>
                       </form>
                     </div>
-
                     
                     <div class="card">
                         <div class="card-header">
@@ -52,18 +51,23 @@
                                         <th>Code</th>
                                         <th>Action</th>
                                     </tr>
-                                    {{-- @foreach($interests as $i) --}}
+                                    @foreach($tags as $i)
                                     <tr>
-                                        {{--
-                                        <td>{{ $i -> name}}</td> --}} {{--
-                                        <td>{{ $i -> code}}</td> --}}
+                                       
+                                        <td>{{ $i -> name}}</td> 
+                                        <td>{{ $i -> code}}</td> 
                                         <td>
-                                            <a href="#" class="btn btn-outline-danger btn-sm">
-                                                <i class="ion ion-delete"></i> Remove</a>
+                                            <form action="{{action('ProfileController@destroy', $i['id'])}}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <button class="btn btn-outline-danger  btn-action" data-toggle="tooltip" type="submit" title="Remove">
+                                                    <i class="ion ion-trash-b"></i> Remove
+                                                </button>
+                                            </form>
                                             <td>
                                             </td>
                                     </tr>
-                                    {{-- @endforeach --}}
+                                    @endforeach
                                 </table>
                             </div>
                         </div>
